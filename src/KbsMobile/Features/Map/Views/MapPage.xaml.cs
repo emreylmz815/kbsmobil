@@ -10,11 +10,24 @@ public partial class MapPage : ContentPage
     {
         InitializeComponent();
         BindingContext = _viewModel = viewModel;
+        _viewModel.FocusRequested += FocusToAsync;
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
         _viewModel.LoadMapCommand.Execute(null);
+    }
+
+    private async Task FocusToAsync(double lat, double lon)
+    {
+        try
+        {
+            await MapWebView.EvaluateJavaScriptAsync($"focusTo({lat.ToString(System.Globalization.CultureInfo.InvariantCulture)},{lon.ToString(System.Globalization.CultureInfo.InvariantCulture)});");
+        }
+        catch
+        {
+            // WebView henüz hazır değilse yoksay
+        }
     }
 }

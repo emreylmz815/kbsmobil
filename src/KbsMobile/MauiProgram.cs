@@ -10,7 +10,6 @@ using KbsMobile.Features.Layers.Views;
 using KbsMobile.Features.Map.Services;
 using KbsMobile.Features.Map.ViewModels;
 using KbsMobile.Features.Map.Views;
-using KbsMobile.Features.Media.Services;
 using KbsMobile.Features.Media.ViewModels;
 using KbsMobile.Features.Media.Views;
 using KbsMobile.Features.Records.Services;
@@ -27,9 +26,7 @@ using KbsMobile.Services.Layers;
 using KbsMobile.Services.Location;
 using KbsMobile.Services.Logging;
 using KbsMobile.Services.Media;
-using KbsMobile.Services.Records;
 using Microsoft.Extensions.Logging;
-using Polly;
 using Polly.Extensions.Http;
 
 namespace KbsMobile;

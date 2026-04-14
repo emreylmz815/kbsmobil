@@ -32,7 +32,7 @@ public partial class LoginViewModel(
                 return;
             }
 
-            await navigationService.GoToAsync("//main/dashboard");
+            await navigationService.GoToAsync("//main/map");
         }, exceptionHandler);
     }
 }

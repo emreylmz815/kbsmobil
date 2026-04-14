@@ -8,15 +8,14 @@ Kurumsal saha/KBS kullanımına uygun, .NET MAUI tabanlı mobil istemci.
 - Harita çözümü: MAUI `WebView` içinde OpenLayers (WMS odaklı), servis bazlı katman yönetimi.
 - Veri akışı: View -> ViewModel -> Service -> Repository/API.
 
-## Temel Modüller
-1. Authentication (login/splash/logout)
-2. Dashboard
-3. Map + WMS + Layer management
-4. Records CRUD
-5. Form + validasyon
-6. Media capture/pick
-7. Location
-8. Error/logging
+## Güncel Akış (İstenen UX)
+1. Uygulama açılışında **Splash -> Login** akışı çalışır.
+2. Başarılı giriş sonrası kullanıcı doğrudan **Harita** sekmesine geçer.
+3. Harita varsayılan olarak **Düzce merkez** koordinatlarına odaklanır.
+4. Harita ekranında:
+   - Sol açılır menü: **Haritalar, Katmanlar, Profil, Çıkış Yap**
+   - Sağ açılır menü: Daha önceki kayıtlar listesi + seçili kayıt detay kartı
+5. Sağ karttaki **Haritada Göster** butonu menüleri kapatır ve ilgili kayda zoom yapar.
 
 ## Mock'tan Gerçek API'ye Geçiş
 - `MockAuthService` yerine API tabanlı servis implementasyonu ekleyin.

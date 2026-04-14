@@ -16,7 +16,7 @@ public partial class SplashViewModel(
         {
             await Task.Delay(1200);
             var isAlive = await authService.IsSessionAliveAsync();
-            await navigationService.GoToAsync(isAlive ? "//main/dashboard" : "//login");
+            await navigationService.GoToAsync(isAlive ? "//main/map" : "//login");
         }, exceptionHandler);
     }
 }
