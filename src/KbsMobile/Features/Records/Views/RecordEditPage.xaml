@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KbsMobile.Features.Records.Views.RecordEditPage"
+             Title="Kayıt Formu">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="8">
+            <Entry Placeholder="Başlık" Text="{Binding TitleInput}"/>
+            <Picker Title="Kategori" SelectedItem="{Binding CategoryInput}">
+                <x:String>Altyapi</x:String>
+                <x:String>Elektrik</x:String>
+                <x:String>Temizlik</x:String>
+            </Picker>
+            <Editor Placeholder="Açıklama" AutoSize="TextChanges" Text="{Binding DescriptionInput}" HeightRequest="120"/>
+            <DatePicker Date="{Binding IncidentDate}"/>
+            <HorizontalStackLayout><Label Text="Acil"/><Switch IsToggled="{Binding IsUrgent}"/></HorizontalStackLayout>
+            <Entry Placeholder="Enlem" Keyboard="Numeric" Text="{Binding Latitude}"/>
+            <Entry Placeholder="Boylam" Keyboard="Numeric" Text="{Binding Longitude}"/>
+            <Button Text="Mevcut Konumu Doldur" Command="{Binding FillCurrentLocationCommand}"/>
+            <Button Text="Fotoğraf Ekle" Command="{Binding OpenMediaCommand}"/>
+            <Button Text="Kaydet" Command="{Binding SaveCommand}"/>
+            <Label Text="{Binding ErrorMessage}" TextColor="{StaticResource Error}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

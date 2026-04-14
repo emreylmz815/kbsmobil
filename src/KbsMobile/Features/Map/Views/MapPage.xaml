@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KbsMobile.Features.Map.Views.MapPage"
+             Title="Harita">
+    <Grid RowDefinitions="Auto,*">
+        <HorizontalStackLayout Padding="10" Spacing="8">
+            <Button Text="Katmanlar" Command="{Binding OpenLayerPanelCommand}" />
+            <Button Text="Konuma Git" Command="{Binding LoadMapCommand}" />
+        </HorizontalStackLayout>
+        <WebView Grid.Row="1" Source="{Binding MapHtml}" />
+    </Grid>
+</ContentPage>

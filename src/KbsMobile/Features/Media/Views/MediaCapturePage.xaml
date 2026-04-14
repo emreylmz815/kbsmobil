@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KbsMobile.Features.Media.Views.MediaCapturePage"
+             Title="Fotoğraf">
+    <VerticalStackLayout Padding="16" Spacing="8">
+        <HorizontalStackLayout Spacing="8">
+            <Button Text="Kamera" Command="{Binding CaptureCommand}"/>
+            <Button Text="Galeri" Command="{Binding PickCommand}"/>
+        </HorizontalStackLayout>
+        <CollectionView ItemsSource="{Binding Photos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,4">
+                        <HorizontalStackLayout Spacing="8">
+                            <Image Source="{Binding LocalPath}" HeightRequest="60" WidthRequest="60"/>
+                            <Label Text="{Binding FileName}" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

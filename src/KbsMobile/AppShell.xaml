@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="KbsMobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:authViews="clr-namespace:KbsMobile.Features.Auth.Views"
+    xmlns:dashboardViews="clr-namespace:KbsMobile.Features.Dashboard.Views"
+    xmlns:mapViews="clr-namespace:KbsMobile.Features.Map.Views"
+    xmlns:recordViews="clr-namespace:KbsMobile.Features.Records.Views"
+    xmlns:settingsViews="clr-namespace:KbsMobile.Features.Settings.Views"
+    FlyoutBehavior="Disabled">
+
+    <ShellContent Route="splash" ContentTemplate="{DataTemplate authViews:SplashPage}" />
+    <ShellContent Route="login" ContentTemplate="{DataTemplate authViews:LoginPage}" />
+
+    <TabBar Route="main">
+        <ShellContent Title="Ana Sayfa" Route="dashboard" ContentTemplate="{DataTemplate dashboardViews:DashboardPage}" />
+        <ShellContent Title="Harita" Route="map" ContentTemplate="{DataTemplate mapViews:MapPage}" />
+        <ShellContent Title="Kayıtlar" Route="records" ContentTemplate="{DataTemplate recordViews:RecordsPage}" />
+        <ShellContent Title="Ayarlar" Route="settings" ContentTemplate="{DataTemplate settingsViews:SettingsPage}" />
+    </TabBar>
+</Shell>
