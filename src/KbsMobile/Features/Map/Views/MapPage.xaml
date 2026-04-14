@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:KbsMobile.Core.Models"
+             x:Class="KbsMobile.Features.Map.Views.MapPage"
+             Title="Harita">
+    <Grid>
+        <WebView x:Name="MapWebView" Source="{Binding MapHtmlSource}" />
+
+        <Grid Padding="12" VerticalOptions="Start" ColumnDefinitions="Auto,*,Auto">
+            <Button Text="☰" WidthRequest="44" HeightRequest="44" Command="{Binding ToggleLeftMenuCommand}"/>
+            <Button Grid.Column="2" Text="☷" WidthRequest="44" HeightRequest="44" Command="{Binding ToggleRightMenuCommand}"/>
+        </Grid>
+
+        <Border IsVisible="{Binding IsLeftMenuOpen}" HorizontalOptions="Start" VerticalOptions="Fill" WidthRequest="240" BackgroundColor="#F3F6FB" StrokeThickness="0">
+            <VerticalStackLayout Padding="12" Spacing="8">
+                <Label Text="Menü" FontAttributes="Bold" FontSize="18"/>
+                <Button Text="Haritalar" Command="{Binding LoadMapCommand}"/>
+                <Button Text="Katmanlar" Command="{Binding OpenLayerPanelCommand}"/>
+                <Button Text="Profil" Command="{Binding OpenProfileCommand}"/>
+                <Button Text="Çıkış Yap" Command="{Binding LogoutCommand}" BackgroundColor="{StaticResource Error}"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <Border IsVisible="{Binding IsRightMenuOpen}" HorizontalOptions="End" VerticalOptions="Fill" WidthRequest="280" BackgroundColor="#F3F6FB" StrokeThickness="0">
+            <Grid RowDefinitions="Auto,*,Auto" Padding="12">
+                <Label Text="Kayıtlı Veriler" FontAttributes="Bold" FontSize="18"/>
+                <CollectionView Grid.Row="1" ItemsSource="{Binding Records}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:FieldRecord">
+                            <Frame Margin="0,4" Padding="8">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Title}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Category}" FontSize="12"/>
+                                    <Button Text="Kartı Aç" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenRecordCardCommand}" CommandParameter="{Binding .}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Border Grid.Row="2" Stroke="LightGray" StrokeThickness="1" Padding="8" IsVisible="{Binding HasSelectedRecord}">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="{Binding SelectedRecord.Title}" FontAttributes="Bold"/>
+                        <Label Text="{Binding SelectedRecord.Description}" FontSize="12"/>
+                        <Label Text="{Binding SelectedRecord.Latitude, StringFormat='Lat: {0:F5}'}" FontSize="12"/>
+                        <Label Text="{Binding SelectedRecord.Longitude, StringFormat='Lon: {0:F5}'}" FontSize="12"/>
+                        <Button Text="Haritada Göster" Command="{Binding ShowRecordOnMapCommand}"/>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

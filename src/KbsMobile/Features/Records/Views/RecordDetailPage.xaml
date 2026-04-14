@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KbsMobile.Features.Records.Views.RecordDetailPage"
+             Title="Kayıt Detay">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="10">
+            <Label Text="{Binding Record.Title}" FontSize="20" FontAttributes="Bold"/>
+            <Label Text="{Binding Record.Description}"/>
+            <Label Text="{Binding Record.Category}"/>
+            <Label Text="{Binding Record.IncidentDate}"/>
+            <Label Text="{Binding Record.Latitude, StringFormat='Lat: {0:F5}'}"/>
+            <Label Text="{Binding Record.Longitude, StringFormat='Lon: {0:F5}'}"/>
+            <HorizontalStackLayout>
+                <Button Text="Düzenle" Command="{Binding EditCommand}"/>
+                <Button Text="Sil" Command="{Binding DeleteCommand}" BackgroundColor="{StaticResource Error}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
